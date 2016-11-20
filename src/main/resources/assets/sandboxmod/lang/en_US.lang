@@ -1,0 +1,5 @@
+item.ingotExperimentium.name=Experimentium Ingot
+item.nuggetExperimentium.name=Experimentium Nugget
+tile.blockExperimentium.name=Block of Experimentium
+tile.oreExperimentium.name=Experimentium Ore
+itemGroup.sandboxmod=Sandbox Mod
