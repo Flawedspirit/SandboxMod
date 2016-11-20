@@ -24,15 +24,15 @@ public class SandboxModWorldGen implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
 		if(world.provider.getDimension() == 0) {
-			doOverworldGen(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
+			registerGeneratedObjects(random, chunkX, chunkZ, world, chunkGenerator, chunkProvider);
 		}
 	}
 
-	private void doOverworldGen(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		doOreGen(BlockRegistrar.oreExperimentium.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 12, 40, 2 + random.nextInt(3), 10);
+	private void registerGeneratedObjects(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		doOverworldGen(BlockRegistrar.oreExperimentium.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 12, 40, 2 + random.nextInt(3), 10);
 	}
 	
-	private void doOreGen(IBlockState ore, World world, Random random, int x, int z, int minY, int maxY, int size, int chance) {
+	private void doOverworldGen(IBlockState ore, World world, Random random, int x, int z, int minY, int maxY, int size, int chance) {
 		int deltaY = maxY - minY;
 		
 		for(int i = 0; i < chance; i++) {
