@@ -41,7 +41,7 @@ public class SandboxMod {
 	public static final SandboxModTab creativeTab = new SandboxModTab();
 	
 	/* REGISTER MATERIALS */
-	public static final ItemArmor.ArmorMaterial experimentiumArmorMaterial = EnumHelper.addArmorMaterial("EXPERIMENTIUM", MODID + ":experimentium", 42, new int[]{3, 8, 6, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3f);
+	public static final ItemArmor.ArmorMaterial experimentiumArmorMaterial = EnumHelper.addArmorMaterial("EXPERIMENTIUM", MODID + ":experimentium", 42, new int[]{3, 6, 8, 3}, 30, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 3f);
 	public static final Item.ToolMaterial experimentiumToolMaterial = EnumHelper.addToolMaterial("EXPERIMENTIUM", 3, 2440, 14f, 4f, 26);
 	
 	@Mod.EventHandler

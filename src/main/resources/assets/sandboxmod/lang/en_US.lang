@@ -1,3 +1,7 @@
+item.experimentiumHelmet.name=Experimentium Helmet
+item.experimentiumChestplate.name=Experimentium Chestplate
+item.experimentiumLeggings.name=Experimentium Leggings
+item.experimentiumBoots.name=Experimentium Boots
 item.ingotExperimentium.name=Experimentium Ingot
 item.nuggetExperimentium.name=Experimentium Nugget
 tile.blockExperimentium.name=Block of Experimentium
