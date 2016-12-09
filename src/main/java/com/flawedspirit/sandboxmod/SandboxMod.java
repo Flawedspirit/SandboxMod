@@ -14,6 +14,8 @@ import com.flawedspirit.sandboxmod.registry.MaterialRegistrar;
 import com.flawedspirit.sandboxmod.registry.RecipeRegistrar;
 import com.flawedspirit.sandboxmod.world.SandboxModWorldGen;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -35,7 +37,12 @@ public class SandboxMod {
 	@SidedProxy(clientSide = "com.flawedspirit.sandboxmod.proxy.ClientProxy", serverSide = "com.flawedspirit.sandboxmod.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
-	public static final SandboxModTab creativeTab = new SandboxModTab();
+	public static CreativeTabs creativeTab = new CreativeTabs("sandboxmod") {
+		@Override
+		public Item getTabIconItem() {
+			return ItemRegistrar.ingotExperimentium;
+		}
+	};
 	
 	@Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
