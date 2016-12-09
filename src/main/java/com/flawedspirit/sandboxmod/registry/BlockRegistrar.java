@@ -41,9 +41,9 @@ public class BlockRegistrar {
 			}
 			
 			if(block instanceof IOreDictItem) {
-				((IOreDictItem) block).initOreDict();
+				((IOreDictItem) block).registerOreDict();
 			} else if(itemBlock instanceof IOreDictItem) {
-				((IOreDictItem) itemBlock).initOreDict();
+				((IOreDictItem) itemBlock).registerOreDict();
 			}
 		}
 		

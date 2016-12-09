@@ -19,7 +19,7 @@ public class ItemOre extends ItemBase implements IOreDictItem {
 	}
 
 	@Override
-	public void initOreDict() {
+	public void registerOreDict() {
 		OreDictionary.registerOre(oreDictName, this);
 	}
 }

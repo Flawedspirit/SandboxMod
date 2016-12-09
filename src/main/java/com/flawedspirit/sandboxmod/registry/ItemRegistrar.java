@@ -8,7 +8,6 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod.registry;
 
-import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.item.ArmorBase;
 import com.flawedspirit.sandboxmod.item.IModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
@@ -31,10 +30,10 @@ public class ItemRegistrar {
 	public static Item nuggetExperimentium;
 	
 	public static void registerItems() {
-		experimentiumHelmet = registerItem(new ArmorBase("experimentiumHelmet", SandboxMod.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
-		experimentiumChestplate = registerItem(new ArmorBase("experimentiumChestplate", SandboxMod.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
-		experimentiumLeggings = registerItem(new ArmorBase("experimentiumLeggings", SandboxMod.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
-		experimentiumBoots = registerItem(new ArmorBase("experimentiumBoots", SandboxMod.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
+		experimentiumHelmet = registerItem(new ArmorBase("experimentiumHelmet", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
+		experimentiumChestplate = registerItem(new ArmorBase("experimentiumChestplate", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
+		experimentiumLeggings = registerItem(new ArmorBase("experimentiumLeggings", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
+		experimentiumBoots = registerItem(new ArmorBase("experimentiumBoots", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
 		
 		ingotExperimentium = registerItem(new ItemBase("ingotExperimentium"));
 		nuggetExperimentium = registerItem(new ItemBase("nuggetExperimentium"));
@@ -48,7 +47,7 @@ public class ItemRegistrar {
 		}
 		
 		if(item instanceof IOreDictItem) {
-			((IOreDictItem) item).initOreDict();
+			((IOreDictItem) item).registerOreDict();
 		}
 		
 		return item;

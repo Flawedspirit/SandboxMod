@@ -37,7 +37,7 @@ public class BlockOre extends BlockBase implements IOreDictItem {
 	}
 
 	@Override
-	public void initOreDict() {
+	public void registerOreDict() {
 		OreDictionary.registerOre(oreDictName, this);
 	}
 }
