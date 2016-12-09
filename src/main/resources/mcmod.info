@@ -1,16 +1,14 @@
-[
-{
-  "modid": "sandboxmod",
-  "name": "Sandbox Mod",
-  "description": "A simple example mod I made to teach me forge modding.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["Flawedspirit"],
-  "credits": "_Bedrock_Miner_, Shadowfacts for tutorials.",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
-]
+[{
+	"modid": "sandboxmod",
+	"name": "Sandbox Mod",
+	"description": "A simple example mod I made to teach me forge modding.",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "",
+	"updateUrl": "",
+	"authorList": ["Flawedspirit"],
+	"credits": "",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}]
