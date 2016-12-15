@@ -7,12 +7,13 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod;
 
-import com.flawedspirit.sandboxmod.client.ClientProxy;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+
 import com.flawedspirit.sandboxmod.common.CommonProxy;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
 
-import jline.internal.Log;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
@@ -28,6 +29,8 @@ public class SandboxMod {
 	@Instance(Reference.MODID)
 	public static SandboxMod instance;
 	
+	public static Logger logger;
+	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
 	public static CommonProxy proxy;
 	
@@ -39,17 +42,19 @@ public class SandboxMod {
 	};
 	
 	@Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent e) {
-		proxy.preInit();
+    public void preInit(FMLPreInitializationEvent event) {
+		logger = event.getModLog();
+		proxy.preInit(event);
     }
         
     @Mod.EventHandler
-    public void init(FMLInitializationEvent e) {
-    	ClientProxy.registerRenderers();
+    public void init(FMLInitializationEvent event) {
+    	proxy.init(event);
     }
         
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-    	Log.info(Reference.MODNAME + " has finished initializing.");
+    public void postInit(FMLPostInitializationEvent event) {
+    	proxy.postInit(event);
+    	logger.log(Level.INFO, Reference.MODNAME + " has finished initializing.");
     }
 }

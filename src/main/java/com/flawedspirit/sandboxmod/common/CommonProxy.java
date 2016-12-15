@@ -7,37 +7,39 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod.common;
 
-import com.flawedspirit.sandboxmod.compatability.CompatHandler;
+import org.apache.logging.log4j.Level;
+
+import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.compatibility.CompatHandler;
 import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
 import com.flawedspirit.sandboxmod.registry.MaterialRegistrar;
 import com.flawedspirit.sandboxmod.registry.RecipeRegistrar;
 import com.flawedspirit.sandboxmod.world.SandboxModWorldGen;
 
-import jline.internal.Log;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 
-	public void preInit() {
+	public void preInit(FMLPreInitializationEvent event) {
 		MaterialRegistrar.registerMaterials();
 		ItemRegistrar.registerItems();
 		BlockRegistrar.registerBlocks();
-		Log.info("Registered objects.");
 		
 		RecipeRegistrar.registerRecipes();
 		RecipeRegistrar.registerSmeltingRecipes();
-		Log.info("Registered recipes.");
 		
 		GameRegistry.registerWorldGenerator(new SandboxModWorldGen(), 3);
-		Log.info("Registered world generators.");
 		
 		CompatHandler.registerTOPCompat();
 		CompatHandler.registerWailaCompat();
-		Log.info("Registered mod compatability handlers.");
+		SandboxMod.logger.log(Level.INFO, "Finished registering common components.");
 	}
 	
-	public void init() {}
+	public void init(FMLInitializationEvent event) {}
 	
-	public void postInit() {}
+	public void postInit(FMLPostInitializationEvent event) {}
 }
