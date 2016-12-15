@@ -8,7 +8,9 @@
 package com.flawedspirit.sandboxmod.block;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.client.ClientProxy;
 import com.flawedspirit.sandboxmod.item.IModelProvider;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -40,7 +42,7 @@ public class BlockBase extends Block implements IModelProvider {
 	}
 	
 	public void registerItemModel(ItemBlock itemBlock) {
-		SandboxMod.proxy.registerItemRenderers(itemBlock, 0, name);
+		ClientProxy.registerItemRenderers(itemBlock, 0, name);
 	}
 	
 	@Override
@@ -51,6 +53,6 @@ public class BlockBase extends Block implements IModelProvider {
 
 	@Override
 	public void registerItemModel(Item item) {
-		SandboxMod.proxy.registerItemRenderers(item, 0, name);
+		ClientProxy.registerItemRenderers(item, 0, name);
 	}
 }

@@ -7,13 +7,12 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod;
 
-import com.flawedspirit.sandboxmod.proxy.CommonProxy;
-import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
+import com.flawedspirit.sandboxmod.client.ClientProxy;
+import com.flawedspirit.sandboxmod.common.CommonProxy;
+import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
-import com.flawedspirit.sandboxmod.registry.MaterialRegistrar;
-import com.flawedspirit.sandboxmod.registry.RecipeRegistrar;
-import com.flawedspirit.sandboxmod.world.SandboxModWorldGen;
 
+import jline.internal.Log;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
@@ -22,22 +21,17 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = SandboxMod.MODID, name = SandboxMod.MODNAME, version = SandboxMod.VERSION, dependencies = "required-after:Forge@[12.18.2.2099]")
+@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = Reference.DEPENDANCIES)
 public class SandboxMod {
 
-	public static final String MODID     = "sandboxmod";
-	public static final String MODNAME   = "Sandbox Mod";
-	public static final String VERSION   = "@VERSION@";
-	
-	@Instance(MODID)
+	@Instance(Reference.MODID)
 	public static SandboxMod instance;
 	
-	@SidedProxy(clientSide = "com.flawedspirit.sandboxmod.proxy.ClientProxy", serverSide = "com.flawedspirit.sandboxmod.proxy.CommonProxy")
+	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
 	public static CommonProxy proxy;
 	
-	public static CreativeTabs creativeTab = new CreativeTabs("sandboxmod") {
+	public static CreativeTabs creativeTab = new CreativeTabs(Reference.MODID) {
 		@Override
 		public Item getTabIconItem() {
 			return ItemRegistrar.ingotExperimentium;
@@ -46,27 +40,16 @@ public class SandboxMod {
 	
 	@Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-		System.out.print("Initializing object registries... ");
-		MaterialRegistrar.registerMaterials();
-		ItemRegistrar.registerItems();
-		BlockRegistrar.registerBlocks();
-		System.out.print("Done!\n");
-		
-		System.out.print("Initializing recipe registries... ");
-		RecipeRegistrar.registerRecipes();
-		RecipeRegistrar.registerSmeltingRecipes();
-		System.out.print("Done!\n");
-		
-		System.out.print("Initializing worldgen registry... ");
-		GameRegistry.registerWorldGenerator(new SandboxModWorldGen(), 3);
-		System.out.print("Done!\n");
+		proxy.preInit();
     }
         
     @Mod.EventHandler
-    public void init(FMLInitializationEvent e) { }
+    public void init(FMLInitializationEvent e) {
+    	ClientProxy.registerRenderers();
+    }
         
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-    	System.out.println(MODNAME + " has finished initializing.");
+    	Log.info(Reference.MODNAME + " has finished initializing.");
     }
 }

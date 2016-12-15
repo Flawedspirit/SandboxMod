@@ -8,6 +8,7 @@
 package com.flawedspirit.sandboxmod.item;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.client.ClientProxy;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -27,6 +28,6 @@ public class ArmorBase extends ItemArmor implements IModelProvider {
 
 	@Override
 	public void registerItemModel(Item item) {
-		SandboxMod.proxy.registerItemRenderers(this, 0, name);
+		ClientProxy.registerItemRenderers(this, 0, name);
 	}
 }

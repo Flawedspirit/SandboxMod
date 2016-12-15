@@ -8,6 +8,7 @@
 package com.flawedspirit.sandboxmod.item;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.client.ClientProxy;
 
 import net.minecraft.item.Item;
 
@@ -29,6 +30,6 @@ public class ItemBase extends Item implements IModelProvider {
 
 	@Override
 	public void registerItemModel(Item item) {
-		SandboxMod.proxy.registerItemRenderers(item, 0, name);
+		ClientProxy.registerItemRenderers(item, 0, name);
 	}
 }
