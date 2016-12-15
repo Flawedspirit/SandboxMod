@@ -7,11 +7,17 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod.client;
 
+import org.apache.logging.log4j.Level;
+
+import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestal;
+import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestalRenderer;
 import com.flawedspirit.sandboxmod.common.CommonProxy;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
@@ -27,6 +33,7 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	public static void registerRenderers() {
-		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemPedestal.class, new TileEntityItemPedestalRenderer());
+		SandboxMod.logger.log(Level.INFO, "Finished initializing renderers.");
 	}
 }

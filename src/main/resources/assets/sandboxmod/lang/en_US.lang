@@ -7,4 +7,5 @@ item.nuggetExperimentium.name=Experimentium Nugget
 tile.blockExperimentium.name=Block of Experimentium
 tile.oreExperimentium.name=Experimentium Ore
 tile.counter.name=Counter
+tile.item_pedestal.name=Pedestal
 itemGroup.sandboxmod=Sandbox Mod

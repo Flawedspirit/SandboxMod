@@ -6,6 +6,7 @@ public class Names {
 		public static final String BLOCK_EXPERIMENTIUM = "blockExperimentium";
 		public static final String ORE_EXPERIMENTIUM = "oreExperimentium";
 		public static final String COUNTER = "counter";
+		public static final String ITEM_PEDESTAL = "item_pedestal";
 	}
 	
 	public static class Config {

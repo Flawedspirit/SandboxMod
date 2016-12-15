@@ -31,13 +31,13 @@ public class BlockCounter extends BlockTileEntity<TileEntityCounter> implements 
 	}
 	
 	@Override
-	public Class<TileEntityCounter> getTileEntityClass() {
-		return TileEntityCounter.class;
-	}
-
-	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityCounter();
+	}
+	
+	@Override
+	public Class<TileEntityCounter> getTileEntityClass() {
+		return TileEntityCounter.class;
 	}
 
 	@Override
