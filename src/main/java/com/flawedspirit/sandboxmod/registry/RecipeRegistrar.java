@@ -7,16 +7,30 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod.registry;
 
+import com.flawedspirit.sandboxmod.common.Config;
+
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipeRegistrar {
 
 	public static void registerRecipes() {
-		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumHelmet), "EEE", "E E", 'E', ItemRegistrar.ingotExperimentium);
-		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumChestplate), "E E", "EEE", "EEE", 'E', ItemRegistrar.ingotExperimentium);
-		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumLeggings), "EEE", "E E", "E E", 'E', ItemRegistrar.ingotExperimentium);
-		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumBoots), "E E", "E E", 'E', ItemRegistrar.ingotExperimentium);
+		if(Config.enableExperimentiumHelmetCrafting) {
+			GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumHelmet), "EEE", "E E", 'E', ItemRegistrar.ingotExperimentium);
+		}
+		
+		if(Config.enableExperimentiumChestplateCrafting) {
+			GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumChestplate), "E E", "EEE", "EEE", 'E', ItemRegistrar.ingotExperimentium);
+		}
+		
+		if(Config.enableExperimentiumLeggingsCrafting) {
+			GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumLeggings), "EEE", "E E", "E E", 'E', ItemRegistrar.ingotExperimentium);
+		}
+		
+		if(Config.enableExperimentiumBootsCrafting) {
+			GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.experimentiumBoots), "E E", "E E", 'E', ItemRegistrar.ingotExperimentium);
+		}
+		
 		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.ingotExperimentium), "NNN", "NNN", "NNN", 'N', ItemRegistrar.nuggetExperimentium);
 		
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegistrar.blockExperimentium), "EEE", "EEE", "EEE", 'E', ItemRegistrar.ingotExperimentium);

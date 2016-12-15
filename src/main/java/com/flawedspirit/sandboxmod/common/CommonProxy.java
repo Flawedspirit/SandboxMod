@@ -7,16 +7,20 @@
  ******************************************************************************/
 package com.flawedspirit.sandboxmod.common;
 
+import java.io.File;
+
 import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.compatibility.CompatHandler;
+import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
 import com.flawedspirit.sandboxmod.registry.MaterialRegistrar;
 import com.flawedspirit.sandboxmod.registry.RecipeRegistrar;
 import com.flawedspirit.sandboxmod.world.SandboxModWorldGen;
 
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -24,7 +28,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 
+	public static Configuration config;
+
 	public void preInit(FMLPreInitializationEvent event) {
+		
+		File configDir = event.getModConfigurationDirectory();
+		config = new Configuration(new File(configDir.getPath(), Reference.MODID + ".cfg"));
+		Config.loadConfig();
+		SandboxMod.logger.log(Level.INFO, "Loaded config.");
+		
 		MaterialRegistrar.registerMaterials();
 		ItemRegistrar.registerItems();
 		BlockRegistrar.registerBlocks();
@@ -32,7 +44,9 @@ public class CommonProxy {
 		RecipeRegistrar.registerRecipes();
 		RecipeRegistrar.registerSmeltingRecipes();
 		
-		GameRegistry.registerWorldGenerator(new SandboxModWorldGen(), 3);
+		if(Config.generateExperimentiumOre) {
+			GameRegistry.registerWorldGenerator(new SandboxModWorldGen(), 3);
+		}
 		
 		CompatHandler.registerTOPCompat();
 		CompatHandler.registerWailaCompat();
@@ -41,5 +55,10 @@ public class CommonProxy {
 	
 	public void init(FMLInitializationEvent event) {}
 	
-	public void postInit(FMLPostInitializationEvent event) {}
+	public void postInit(FMLPostInitializationEvent event) {
+		
+		if(config.hasChanged()) {
+			config.save();
+		}
+	}
 }
