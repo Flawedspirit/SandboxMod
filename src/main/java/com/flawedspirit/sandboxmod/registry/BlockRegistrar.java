@@ -10,8 +10,8 @@ package com.flawedspirit.sandboxmod.registry;
 import com.flawedspirit.sandboxmod.block.BlockBase;
 import com.flawedspirit.sandboxmod.block.BlockOre;
 import com.flawedspirit.sandboxmod.block.BlockTileEntity;
-import com.flawedspirit.sandboxmod.block.tile.BlockCounter;
-import com.flawedspirit.sandboxmod.item.IModelProvider;
+import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
+import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
 
 import net.minecraft.block.Block;
@@ -32,7 +32,7 @@ public class BlockRegistrar {
 	
 	public static void registerBlocks() {
 		blockExperimentium = registerBlock(new BlockBase(Material.IRON, "blockExperimentium"));
-		oreExperimentium = registerBlock(new BlockOre("oreExperimentium"));
+		oreExperimentium = registerBlock(new BlockOre("oreExperimentium", "oreExperimentium"));
 		counter = registerBlock(new BlockCounter("counter"));		
 	}
 	
@@ -42,13 +42,15 @@ public class BlockRegistrar {
 		if(itemBlock != null) {
 			GameRegistry.register(itemBlock);
 			
-			if(block instanceof IModelProvider) {
-				((IModelProvider) block).registerItemModel(itemBlock);
+			if(block instanceof IItemModelProvider) {
+				((IItemModelProvider) block).registerItemModel(itemBlock);
 			}
 			
 			if(block instanceof IOreDictItem) {
 				((IOreDictItem) block).registerOreDict();
-			} else if(itemBlock instanceof IOreDictItem) {
+			}
+			
+			if(itemBlock instanceof IOreDictItem) {
 				((IOreDictItem) itemBlock).registerOreDict();
 			}
 			
