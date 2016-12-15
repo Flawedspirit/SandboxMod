@@ -9,6 +9,8 @@ package com.flawedspirit.sandboxmod.registry;
 
 import com.flawedspirit.sandboxmod.block.BlockBase;
 import com.flawedspirit.sandboxmod.block.BlockOre;
+import com.flawedspirit.sandboxmod.block.BlockTileEntity;
+import com.flawedspirit.sandboxmod.block.tile.BlockCounter;
 import com.flawedspirit.sandboxmod.item.IModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
 
@@ -25,9 +27,13 @@ public class BlockRegistrar {
 	/* Ores */
 	public static BlockOre oreExperimentium;
 	
+	/* Tile Entities */
+	public static BlockCounter counter;
+	
 	public static void registerBlocks() {
 		blockExperimentium = registerBlock(new BlockBase(Material.IRON, "blockExperimentium"));
 		oreExperimentium = registerBlock(new BlockOre("oreExperimentium"));
+		counter = registerBlock(new BlockCounter("counter"));		
 	}
 	
 	private static <B extends Block> B registerBlock(B block, ItemBlock itemBlock) {
@@ -44,6 +50,10 @@ public class BlockRegistrar {
 				((IOreDictItem) block).registerOreDict();
 			} else if(itemBlock instanceof IOreDictItem) {
 				((IOreDictItem) itemBlock).registerOreDict();
+			}
+			
+			if (block instanceof BlockTileEntity) {
+				GameRegistry.registerTileEntity(((BlockTileEntity<?>)block).getTileEntityClass(), block.getRegistryName().toString());
 			}
 		}
 		
