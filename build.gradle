@@ -29,7 +29,7 @@ targetCompatibility = 1.8
 
 version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + version_release
 group = group
-archivesBaseName = "FSRandomStuff"
+archivesBaseName = "SandboxMod"
 
 minecraft {
     version = mc_version + '-' + forge_version
