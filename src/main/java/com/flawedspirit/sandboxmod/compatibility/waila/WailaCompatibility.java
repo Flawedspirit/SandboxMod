@@ -1,8 +1,7 @@
-package com.flawedspirit.sandboxmod.compatability.waila;
+package com.flawedspirit.sandboxmod.compatibility.waila;
 
 import java.util.List;
 
-import jline.internal.Log;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
@@ -16,19 +15,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-public class WailaCompatability implements IWailaDataProvider {
+public class WailaCompatibility implements IWailaDataProvider {
 	
 	//private static final WailaCompatability INSTANCE = new WailaCompatability();
 	private static boolean isRegistered;
 	private static boolean isLoaded;
 	
-	private WailaCompatability() {}
+	private WailaCompatibility() {}
 	
 	public static void load(IWailaRegistrar registrar) {
-		Log.debug("WailaCompatability.load");
 		
 		 if(!isRegistered) {
-			 throw new RuntimeException("WAILA compatability handler not properly registered! I suspect this is a bad thing!");
+			 throw new RuntimeException("WAILA compatibility handler not properly registered! I suspect this is a bad thing!");
 		 }
 		 
 		 if(!isLoaded) {
@@ -38,8 +36,9 @@ public class WailaCompatability implements IWailaDataProvider {
 	}
 	
 	public static void register() {
+		
 		if(!isRegistered) {
-			FMLInterModComms.sendMessage("Waila", "register", "com.flawedspirit.sandboxmod.compatability.top.WailaCompatability.load");
+			FMLInterModComms.sendMessage("Waila", "register", "com.flawedspirit.sandboxmod.compatibility.waila.WailaCompatibility.load");
 			isRegistered = true;
 		}
 	}

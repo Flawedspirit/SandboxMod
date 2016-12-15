@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.compatability.top;
+package com.flawedspirit.sandboxmod.compatibility.top;
 
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.google.common.base.Function;
@@ -13,13 +13,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-public class TOPCompatability {
+public class TOPCompatibility {
 	
 	private static boolean isRegistered;
 	
 	public static void register() {
 		if(!isRegistered) {
-			FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", "com.flawedspirit.sandboxmod.compatability.top.TOPCompatability$InitTheOneProbe");
+			FMLInterModComms.sendFunctionMessage("theoneprobe", "getTheOneProbe", "com.flawedspirit.sandboxmod.compatibility.top.TOPCompatibility$InitTheOneProbe");
 			isRegistered = true;
 		}
 	}

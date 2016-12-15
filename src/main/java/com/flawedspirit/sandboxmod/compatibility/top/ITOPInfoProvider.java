@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.compatability.top;
+package com.flawedspirit.sandboxmod.compatibility.top;
 
 import mcjty.theoneprobe.api.IProbeHitData;
 import mcjty.theoneprobe.api.IProbeInfo;

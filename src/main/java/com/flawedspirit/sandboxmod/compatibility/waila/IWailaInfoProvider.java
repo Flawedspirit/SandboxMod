@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.compatability.waila;
+package com.flawedspirit.sandboxmod.compatibility.waila;
 
 import java.util.List;
 
