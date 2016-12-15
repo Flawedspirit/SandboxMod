@@ -14,22 +14,22 @@ import net.minecraft.item.Item;
 
 public class ItemBase extends Item implements IItemModelProvider {
 	
-	protected String name;
+	protected String unlocalizedName;
 	
 	public ItemBase(String unlocalizedName) {
 		this(unlocalizedName, 64);
 	}
 	
 	public ItemBase(String unlocalizedName, int maxStackSize) {
-		this.name = unlocalizedName;
-		setUnlocalizedName(name);
-		setRegistryName(name);
+		this.unlocalizedName = unlocalizedName;
+		setUnlocalizedName(unlocalizedName);
+		setRegistryName(unlocalizedName);
 		setCreativeTab(SandboxMod.creativeTab);
 		setMaxStackSize(maxStackSize);
 	}
 
 	@Override
 	public void registerItemModel(Item item) {
-		ClientProxy.registerItemRenderers(item, 0, name);
+		ClientProxy.registerItemRenderers(item, 0, unlocalizedName);
 	}
 }

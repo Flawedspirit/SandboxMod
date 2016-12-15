@@ -20,20 +20,14 @@ import net.minecraft.item.ItemBlock;
 public class BlockBase extends Block implements IItemModelProvider {
 
 	protected String name;
-	protected String oreDictName;
 	
 	public BlockBase(Material material, String unlocalizedName) {
-		this(material, unlocalizedName, unlocalizedName, 3f, 5f);
-	}
-
-	public BlockBase(Material material, String unlocalizedName, float hardness, float resistance) {
-		this(material, unlocalizedName, unlocalizedName, hardness, resistance);
+		this(material, unlocalizedName, 3f, 5f);
 	}
 	
-	public BlockBase(Material material, String unlocalizedName, String oreDictName, float hardness, float resistance) {
+	public BlockBase(Material material, String unlocalizedName, float hardness, float resistance) {
 		super(material);
 		this.name = unlocalizedName;
-		this.oreDictName = oreDictName;
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setHardness(hardness);

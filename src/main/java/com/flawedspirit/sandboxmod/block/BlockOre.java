@@ -15,7 +15,11 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockOre extends BlockBase implements IOreDictItem {
 	
-	private String oreDictName;
+	protected String oreDictName;
+	
+	public BlockOre(String unlocalizedName) {
+		this(unlocalizedName, unlocalizedName, 3f, 5f);
+	}
 	
 	public BlockOre(String unlocalizedName, String oreDictName) {
 		this(unlocalizedName, oreDictName, 3f, 5f);
@@ -36,6 +40,6 @@ public class BlockOre extends BlockBase implements IOreDictItem {
 
 	@Override
 	public void registerOreDict() {
-		OreDictionary.registerOre(oreDictName, this);
+		OreDictionary.registerOre(this.oreDictName, this);
 	}
 }

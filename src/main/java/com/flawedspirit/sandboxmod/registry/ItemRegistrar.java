@@ -11,7 +11,8 @@ package com.flawedspirit.sandboxmod.registry;
 import com.flawedspirit.sandboxmod.item.ArmorBase;
 import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
-import com.flawedspirit.sandboxmod.item.ItemBase;
+import com.flawedspirit.sandboxmod.item.OreDictItem;
+import com.flawedspirit.sandboxmod.reference.Names;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -30,13 +31,13 @@ public class ItemRegistrar {
 	public static Item nuggetExperimentium;
 	
 	public static void registerItems() {
-		experimentiumHelmet = registerItem(new ArmorBase("experimentiumHelmet", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
-		experimentiumChestplate = registerItem(new ArmorBase("experimentiumChestplate", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
-		experimentiumLeggings = registerItem(new ArmorBase("experimentiumLeggings", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
-		experimentiumBoots = registerItem(new ArmorBase("experimentiumBoots", MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
+		experimentiumHelmet = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_HELMET, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
+		experimentiumChestplate = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_CHEST, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
+		experimentiumLeggings = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_LEGS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
+		experimentiumBoots = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_BOOTS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
 		
-		ingotExperimentium = registerItem(new ItemBase("ingotExperimentium"));
-		nuggetExperimentium = registerItem(new ItemBase("nuggetExperimentium"));
+		ingotExperimentium = registerItem(new OreDictItem(Names.Items.EXPERIMENTIUM_INGOT));
+		nuggetExperimentium = registerItem(new OreDictItem(Names.Items.EXPERIMENTIUM_NUGGET));
 	}
 	
 	private static <I extends Item> I registerItem(I item) {

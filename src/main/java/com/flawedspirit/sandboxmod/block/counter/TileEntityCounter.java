@@ -8,14 +8,15 @@ public class TileEntityCounter extends TileEntity {
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
 		compound.setInteger("count", count);
-		return super.writeToNBT(compound);
+		return compound;
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
-		count = compound.getInteger("count");
 		super.readFromNBT(compound);
+		count = compound.getInteger("count");
 	}
 	
 	public int getCurrentCount() {
@@ -24,9 +25,11 @@ public class TileEntityCounter extends TileEntity {
 	
 	public void increment() {
 		count++;
+		markDirty();
 	}
 	
 	public void decrement() {
 		count--;
+		markDirty();
 	}
 }

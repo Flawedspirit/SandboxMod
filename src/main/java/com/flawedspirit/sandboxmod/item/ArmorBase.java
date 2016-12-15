@@ -16,18 +16,18 @@ import net.minecraft.item.ItemArmor;
 
 public class ArmorBase extends ItemArmor implements IItemModelProvider {
 	
-	private String name;
+	protected String unlocalizedName;
 
 	public ArmorBase(String unlocalizedName, ArmorMaterial materialIn, EntityEquipmentSlot equipmentSlotIn) {
 		super(materialIn, 0, equipmentSlotIn);
-		this.name = unlocalizedName;
-		setUnlocalizedName(name);
-		setRegistryName(name);
+		this.unlocalizedName = unlocalizedName;
+		setUnlocalizedName(unlocalizedName);
+		setRegistryName(unlocalizedName);
 		setCreativeTab(SandboxMod.creativeTab);
 	}
 
 	@Override
 	public void registerItemModel(Item item) {
-		ClientProxy.registerItemRenderers(this, 0, name);
+		ClientProxy.registerItemRenderers(this, 0, unlocalizedName);
 	}
 }

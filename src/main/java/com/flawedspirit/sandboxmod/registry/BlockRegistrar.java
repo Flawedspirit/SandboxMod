@@ -13,6 +13,7 @@ import com.flawedspirit.sandboxmod.block.BlockTileEntity;
 import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
 import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
+import com.flawedspirit.sandboxmod.reference.Names;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,9 +32,9 @@ public class BlockRegistrar {
 	public static BlockCounter counter;
 	
 	public static void registerBlocks() {
-		blockExperimentium = registerBlock(new BlockBase(Material.IRON, "blockExperimentium"));
-		oreExperimentium = registerBlock(new BlockOre("oreExperimentium", "oreExperimentium"));
-		counter = registerBlock(new BlockCounter("counter"));		
+		blockExperimentium = registerBlock(new BlockBase(Material.IRON, Names.Blocks.BLOCK_EXPERIMENTIUM));
+		oreExperimentium = registerBlock(new BlockOre(Names.Blocks.ORE_EXPERIMENTIUM));
+		counter = registerBlock(new BlockCounter(Names.Blocks.COUNTER));		
 	}
 	
 	private static <B extends Block> B registerBlock(B block, ItemBlock itemBlock) {
