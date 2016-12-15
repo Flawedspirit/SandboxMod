@@ -9,7 +9,7 @@ package com.flawedspirit.sandboxmod.item;
 
 import net.minecraft.item.Item;
 
-public interface IModelProvider {
+public interface IItemModelProvider {
 
 	void registerItemModel(Item item);
 }

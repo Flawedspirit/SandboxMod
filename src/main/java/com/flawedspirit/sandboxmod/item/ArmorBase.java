@@ -14,7 +14,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 
-public class ArmorBase extends ItemArmor implements IModelProvider {
+public class ArmorBase extends ItemArmor implements IItemModelProvider {
 	
 	private String name;
 

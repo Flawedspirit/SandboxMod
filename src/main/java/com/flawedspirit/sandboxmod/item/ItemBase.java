@@ -12,7 +12,7 @@ import com.flawedspirit.sandboxmod.client.ClientProxy;
 
 import net.minecraft.item.Item;
 
-public class ItemBase extends Item implements IModelProvider {
+public class ItemBase extends Item implements IItemModelProvider {
 	
 	protected String name;
 	
