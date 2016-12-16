@@ -58,6 +58,7 @@ public class BlockCounter extends BlockTileEntity<TileEntityCounter> implements 
 			} else {
 				tile.increment();
 			}
+			tile.markDirty();
 			player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Count: " + TextFormatting.WHITE + tile.getCurrentCount()));
 		}
 		return true;

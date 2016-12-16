@@ -11,8 +11,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class BlockItemPedestal extends BlockTileEntity<TileEntityItemPedestal> {
@@ -62,12 +60,7 @@ public class BlockItemPedestal extends BlockTileEntity<TileEntityItemPedestal> {
 					player.setHeldItem(hand, tile.insertItem(heldItem));
 				} else {
 					player.setHeldItem(hand, tile.removeItem());
-				}
-				
-				if(tile.getStoredItem() != null) {
-					player.addChatComponentMessage(new TextComponentString(TextFormatting.GREEN + "Stored item: " + TextFormatting.RESET + tile.getStoredItem().getDisplayName()));
-				}
-				
+				}				
 				tile.markDirty();
 				world.notifyBlockUpdate(pos, state, state, 3);
 			}
