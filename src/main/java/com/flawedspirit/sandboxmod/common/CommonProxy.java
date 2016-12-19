@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.compatibility.CompatHandler;
+import com.flawedspirit.sandboxmod.handler.ConfigHandler;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
@@ -34,7 +35,7 @@ public class CommonProxy {
 		
 		File configDir = event.getModConfigurationDirectory();
 		config = new Configuration(new File(configDir.getPath(), Reference.MODID + ".cfg"));
-		Config.loadConfig();
+		ConfigHandler.loadConfig();
 		SandboxMod.logger.log(Level.INFO, "Loaded config.");
 		
 		MaterialRegistrar.registerMaterials();
@@ -44,7 +45,7 @@ public class CommonProxy {
 		RecipeRegistrar.registerRecipes();
 		RecipeRegistrar.registerSmeltingRecipes();
 		
-		if(Config.generateExperimentiumOre) {
+		if(ConfigHandler.generateExperimentiumOre) {
 			GameRegistry.registerWorldGenerator(new SandboxModWorldGen(), 3);
 		}
 		

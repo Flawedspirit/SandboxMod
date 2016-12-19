@@ -1,13 +1,14 @@
-package com.flawedspirit.sandboxmod.common;
+package com.flawedspirit.sandboxmod.handler;
 
 import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
+import com.flawedspirit.sandboxmod.common.CommonProxy;
 import com.flawedspirit.sandboxmod.reference.Names;
 
 import net.minecraftforge.common.config.Configuration;
 
-public class Config {
+public class ConfigHandler {
 	
 	// Crafting recipes
 	public static boolean enableExperimentiumHelmetCrafting = true;

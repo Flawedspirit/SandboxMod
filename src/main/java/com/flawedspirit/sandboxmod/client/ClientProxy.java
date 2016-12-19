@@ -11,7 +11,9 @@ import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestal;
-import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestalRenderer;
+import com.flawedspirit.sandboxmod.block.jar.TileEntityJar;
+import com.flawedspirit.sandboxmod.client.render.TileEntityItemPedestalRenderer;
+import com.flawedspirit.sandboxmod.client.render.TileEntityJarRenderer;
 import com.flawedspirit.sandboxmod.common.CommonProxy;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -34,6 +36,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public static void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemPedestal.class, new TileEntityItemPedestalRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new TileEntityJarRenderer());
 		SandboxMod.logger.log(Level.INFO, "Finished initializing renderers.");
 	}
 }

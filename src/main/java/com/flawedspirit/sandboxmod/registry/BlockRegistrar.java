@@ -12,6 +12,8 @@ import com.flawedspirit.sandboxmod.block.BlockOre;
 import com.flawedspirit.sandboxmod.block.BlockTileEntity;
 import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
 import com.flawedspirit.sandboxmod.block.itempedestal.BlockItemPedestal;
+import com.flawedspirit.sandboxmod.block.jar.BlockJar;
+import com.flawedspirit.sandboxmod.block.obsidianpressureplate.BlockObsidianPressurePlate;
 import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
@@ -32,12 +34,16 @@ public class BlockRegistrar {
 	/* Tile Entities */
 	public static BlockCounter counter;
 	public static BlockItemPedestal itemPedestal;
+	public static BlockJar itemJar;
+	public static BlockObsidianPressurePlate obsidianPlate;
 	
 	public static void registerBlocks() {
 		blockExperimentium = registerBlock(new BlockBase(Material.IRON, Names.Blocks.BLOCK_EXPERIMENTIUM));
 		oreExperimentium = registerBlock(new BlockOre(Names.Blocks.ORE_EXPERIMENTIUM));
 		counter = registerBlock(new BlockCounter(Names.Blocks.COUNTER));
 		itemPedestal = registerBlock(new BlockItemPedestal(Names.Blocks.ITEM_PEDESTAL));
+		itemJar = registerBlock(new BlockJar(Names.Blocks.GLASS_JAR));
+		obsidianPlate = registerBlock(new BlockObsidianPressurePlate(Names.Blocks.OBSIDIAN_PLATE));
 	}
 	
 	private static <B extends Block> B registerBlock(B block, ItemBlock itemBlock) {

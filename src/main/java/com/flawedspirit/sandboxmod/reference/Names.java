@@ -7,6 +7,8 @@ public class Names {
 		public static final String ORE_EXPERIMENTIUM = "oreExperimentium";
 		public static final String COUNTER = "counter";
 		public static final String ITEM_PEDESTAL = "item_pedestal";
+		public static final String GLASS_JAR = "glass_jar";
+		public static final String OBSIDIAN_PLATE = "obsidian_pressure_plate";
 	}
 	
 	public static class Config {
