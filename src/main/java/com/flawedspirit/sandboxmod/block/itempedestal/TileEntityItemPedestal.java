@@ -2,6 +2,8 @@ package com.flawedspirit.sandboxmod.block.itempedestal;
 
 import javax.annotation.Nullable;
 
+import com.flawedspirit.sandboxmod.block.ITileEntityStorage;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -13,7 +15,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileEntityItemPedestal extends TileEntity {
+public class TileEntityItemPedestal extends TileEntity implements ITileEntityStorage {
 
 	private static final int MAX_SLOTS = 1;
 	

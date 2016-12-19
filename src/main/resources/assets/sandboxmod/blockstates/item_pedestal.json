@@ -5,8 +5,7 @@
             "model": "sandboxmod:item_pedestal"
         },
         "inventory": {
-            "model": "sandboxmod:item_pedestal",
-            "transform": "forge:default-block"
+            "model": "sandboxmod:item_pedestal"
         }
     }
 }
