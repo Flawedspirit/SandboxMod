@@ -27,4 +27,8 @@ public abstract class BlockTileEntity<TE extends TileEntity> extends BlockBase i
 	public boolean hasTileEntity(IBlockState state) {
 		return true;
 	}
+	
+	public boolean isInvalid() {
+		return false;
+	}
 }

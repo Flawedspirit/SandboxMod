@@ -20,35 +20,6 @@ public class BlockItemPedestal extends BlockTileEntity<TileEntityItemPedestal> {
 	}
 	
 	@Override
-	public boolean isOpaqueCube(IBlockState blockState) {
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState blockState) {
-		return false;
-	}
-	
-	public int getRenderType() {
-		return -1;
-	}
-
-	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityItemPedestal();
-	}
-	
-	@Override
-	public Class<TileEntityItemPedestal> getTileEntityClass() {
-		return TileEntityItemPedestal.class;
-	}
-	
-	@Override
-	protected TileEntity getTileEntity(World world, BlockPos pos) {
-		return (TileEntityItemPedestal) world.getTileEntity(pos);
-	}
-	
-	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player,
 			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		
@@ -79,5 +50,34 @@ public class BlockItemPedestal extends BlockTileEntity<TileEntityItemPedestal> {
 			world.spawnEntityInWorld(item);
 		}
 		super.breakBlock(world, pos, blockState);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState blockState) {
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState blockState) {
+		return false;
+	}
+	
+	public int getRenderType() {
+		return -1;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityItemPedestal();
+	}
+	
+	@Override
+	public Class<TileEntityItemPedestal> getTileEntityClass() {
+		return TileEntityItemPedestal.class;
+	}
+	
+	@Override
+	protected TileEntity getTileEntity(World world, BlockPos pos) {
+		return (TileEntityItemPedestal) world.getTileEntity(pos);
 	}
 }
