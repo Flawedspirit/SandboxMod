@@ -11,5 +11,5 @@ tile.item_pedestal.name=Pedestal
 tile.glass_jar.name=Glass Jar
 tile.obsidian_pressure_plate.name=Obsidian Pressure Plate
 tile.sanctified_block.name=Sanctified Block
-tile.profane_block.name=Profane Block
+tile.profane_block.name=Profaned Block
 itemGroup.sandboxmod=Sandbox Mod

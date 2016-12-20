@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.apache.logging.log4j.Level;
-
-import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -15,11 +12,7 @@ import com.google.gson.JsonParser;
 
 public class UpdateHandler {
 	
-	public static String REMOTE = "http://minecraft.flawedspirit.com/" + Reference.MODID + ".json";
-	public static UpdateStatus versionStatus = UpdateStatus.CURRENT;
-	
-	//debug move somewhere else
-	public static VersionType type = VersionType.RELEASE;
+	public static String REMOTE = Reference.VERSION_AUTH + Reference.MODID + ".json";
 	
 	public enum VersionType {
 		RELEASE,
@@ -32,11 +25,11 @@ public class UpdateHandler {
 		COMMERROR
 	}
 	
-	public static String getUpdate() {
-		return getRemoteVersion(REMOTE);
+	public static String getUpdate(VersionType versionType) {
+		return getRemoteVersion(REMOTE, versionType);
 	}
 	
-	private static String getRemoteVersion(String location) {
+	private static String getRemoteVersion(String location, VersionType versionType) {
 		try {
 			URL url = new URL(location);
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -57,7 +50,7 @@ public class UpdateHandler {
 				JsonObject root = jsonObject.getAsJsonObject("update");
 				
 				if(root.isJsonObject()) {
-					JsonObject version = (type == VersionType.RELEASE) ? root.getAsJsonObject("release") : root.getAsJsonObject("beta");
+					JsonObject version = (versionType == VersionType.RELEASE) ? root.getAsJsonObject("release") : root.getAsJsonObject("beta");
 					
 					if(version.isJsonObject()) {
 						JsonElement versionString = version.get("version");
@@ -66,9 +59,37 @@ public class UpdateHandler {
 				}
 			}
 		} catch(IOException ex) {
-			SandboxMod.logger.log(Level.WARN, "Unable to query remote version authority: " + ex.getMessage());
-			versionStatus = UpdateStatus.COMMERROR;
+			ex.printStackTrace();
+			Reference.LAST_UPDATE_STATE = UpdateStatus.COMMERROR;
 		}
 		return null;
+	}
+	
+	public static String compareVersions(String modVersion, String remoteVersion) {
+		boolean majorHasUpdate = false,
+			minorHasUpdate = false,
+			patchHasUpdate = false;
+		
+		String[] modVersionParts = modVersion.split("\\.|-");
+		String[] remoteVersionParts = remoteVersion.split("\\.|-");
+		
+		if(Integer.parseInt(modVersionParts[0]) < Integer.parseInt(remoteVersionParts[0])) {
+			majorHasUpdate = true;
+		}
+		
+		if(Integer.parseInt(modVersionParts[1]) < Integer.parseInt(remoteVersionParts[1])) {
+			minorHasUpdate = true;
+		}
+		
+		if(Integer.parseInt(modVersionParts[2]) < Integer.parseInt(remoteVersionParts[2])) {
+			patchHasUpdate = true;
+		}
+		
+		if(majorHasUpdate || minorHasUpdate || patchHasUpdate) {
+			Reference.LAST_UPDATE_STATE = UpdateStatus.OUTDATED;
+			return remoteVersion;
+		}
+		Reference.LAST_UPDATE_STATE = UpdateStatus.CURRENT;
+		return modVersion;
 	}
 }

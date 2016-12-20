@@ -14,6 +14,8 @@ public class Names {
 	}
 	
 	public static class Config {
+		public static final String UPDATES_ENABLED = "updates_enabled";
+		public static final String BETA_UPDATES_ENABLED = "beta_updates_enabled";
 		public static final String EXPERIMENTIUM_HELMET_ENABLED = "experimentium_helmet_enabled";
 		public static final String EXPERIMENTIUM_CHEST_ENABLED = "experimentium_chestplate_enabled";
 		public static final String EXPERIMENTIUM_LEGS_ENABLED = "experimentium_leggings_enabled";

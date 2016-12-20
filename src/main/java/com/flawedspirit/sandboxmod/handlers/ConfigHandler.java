@@ -10,6 +10,10 @@ import net.minecraftforge.common.config.Configuration;
 
 public class ConfigHandler {
 	
+	// Update options
+	public static boolean enableUpdateChecking = true;
+	public static boolean allowBetaUpdates = false;
+	
 	// Crafting recipes
 	public static boolean enableExperimentiumHelmetCrafting = true;
 	public static boolean enableExperimentiumChestplateCrafting = true;
@@ -25,6 +29,7 @@ public class ConfigHandler {
 		
 		try {
 			config.load();
+			initUpdateConfig(config);
 			initRecipeConfig(config);
 			initWorldConfig(config);
 		} catch(Exception ex) {
@@ -36,11 +41,16 @@ public class ConfigHandler {
 		}
 	}
 	
+	private static void initUpdateConfig(Configuration config) {
+		enableUpdateChecking = config.getBoolean(Names.Config.UPDATES_ENABLED, "updates", enableUpdateChecking, "Set this to false to disable automatic update checks.");
+		allowBetaUpdates = config.getBoolean(Names.Config.BETA_UPDATES_ENABLED, "updates", allowBetaUpdates, "Set this to true to enable update checking of beta builds.");
+	}
+	
 	private static void initRecipeConfig(Configuration config) {
-		enableExperimentiumHelmetCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_HELMET_ENABLED, "recipes", enableExperimentiumHelmetCrafting, "Set this to false to disable crafting of Experimentium Helmet.");
-		enableExperimentiumChestplateCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_CHEST_ENABLED, "recipes", enableExperimentiumChestplateCrafting, "Set this to false to disable crafting of Experimentium Chestplate.");
-		enableExperimentiumLeggingsCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_LEGS_ENABLED, "recipes", enableExperimentiumLeggingsCrafting, "Set this to false to disable crafting of Experimentium Leggings.");
-		enableExperimentiumBootsCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_BOOTS_ENABLED, "recipes", enableExperimentiumBootsCrafting, "Set this to false to disable crafting of Experimentium Boots.");
+		enableExperimentiumHelmetCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_HELMET_ENABLED, "recipes", enableExperimentiumHelmetCrafting, "");
+		enableExperimentiumChestplateCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_CHEST_ENABLED, "recipes", enableExperimentiumChestplateCrafting, "");
+		enableExperimentiumLeggingsCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_LEGS_ENABLED, "recipes", enableExperimentiumLeggingsCrafting, "");
+		enableExperimentiumBootsCrafting = config.getBoolean(Names.Config.EXPERIMENTIUM_BOOTS_ENABLED, "recipes", enableExperimentiumBootsCrafting, "");
 	}
 	
 	private static void initWorldConfig(Configuration config) {
