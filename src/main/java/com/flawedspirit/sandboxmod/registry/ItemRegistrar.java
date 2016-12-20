@@ -9,7 +9,6 @@
 package com.flawedspirit.sandboxmod.registry;
 
 import com.flawedspirit.sandboxmod.item.ArmorBase;
-import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
 import com.flawedspirit.sandboxmod.item.OreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
@@ -42,10 +41,6 @@ public class ItemRegistrar {
 	
 	private static <I extends Item> I registerItem(I item) {
 		GameRegistry.register(item);
-		
-		if(item instanceof IItemModelProvider) {
-			((IItemModelProvider) item).registerItemModel(item);
-		}
 		
 		if(item instanceof IOreDictItem) {
 			((IOreDictItem) item).registerOreDict();

@@ -8,13 +8,12 @@
 package com.flawedspirit.sandboxmod.item;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
-import com.flawedspirit.sandboxmod.client.ClientProxy;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 
-public class ArmorBase extends ItemArmor implements IItemModelProvider {
+public class ArmorBase extends ItemArmor {
 	
 	protected String unlocalizedName;
 
@@ -26,8 +25,7 @@ public class ArmorBase extends ItemArmor implements IItemModelProvider {
 		setCreativeTab(SandboxMod.creativeTab);
 	}
 
-	@Override
 	public void registerItemModel(Item item) {
-		ClientProxy.registerItemRenderers(this, 0, unlocalizedName);
+		SandboxMod.proxy.registerItemRenderers(this, 0, unlocalizedName);
 	}
 }

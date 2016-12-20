@@ -14,7 +14,6 @@ import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
 import com.flawedspirit.sandboxmod.block.itempedestal.BlockItemPedestal;
 import com.flawedspirit.sandboxmod.block.jar.BlockJar;
 import com.flawedspirit.sandboxmod.block.obsidianpressureplate.BlockObsidianPressurePlate;
-import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
 
@@ -38,22 +37,33 @@ public class BlockRegistrar {
 	public static BlockObsidianPressurePlate obsidianPlate;
 	
 	public static void registerBlocks() {
-		blockExperimentium = registerBlock(new BlockBase(Material.IRON, Names.Blocks.BLOCK_EXPERIMENTIUM));
-		oreExperimentium = registerBlock(new BlockOre(Names.Blocks.ORE_EXPERIMENTIUM));
-		counter = registerBlock(new BlockCounter(Names.Blocks.COUNTER));
-		itemPedestal = registerBlock(new BlockItemPedestal(Names.Blocks.ITEM_PEDESTAL));
-		itemJar = registerBlock(new BlockJar(Names.Blocks.GLASS_JAR));
-		obsidianPlate = registerBlock(new BlockObsidianPressurePlate(Names.Blocks.OBSIDIAN_PLATE));
+		blockExperimentium = register(new BlockBase(Material.IRON, Names.Blocks.BLOCK_EXPERIMENTIUM));
+		oreExperimentium = register(new BlockOre(Names.Blocks.ORE_EXPERIMENTIUM));
+		counter = register(new BlockCounter(Names.Blocks.COUNTER));
+		itemPedestal = register(new BlockItemPedestal(Names.Blocks.ITEM_PEDESTAL));
+		itemJar = register(new BlockJar(Names.Blocks.GLASS_JAR));
+		obsidianPlate = register(new BlockObsidianPressurePlate(Names.Blocks.OBSIDIAN_PLATE));
 	}
 	
-	private static <B extends Block> B registerBlock(B block, ItemBlock itemBlock) {
+	private static <T extends Block> T register(T block) {
+		ItemBlock itemBlock = new ItemBlock(block);
+		itemBlock.setRegistryName(block.getRegistryName());
+		
+		return register(block, itemBlock);
+	}
+	
+	private static <T extends Block> T register(T block, ItemBlock itemBlock) {
 		GameRegistry.register(block);
 		
 		if(itemBlock != null) {
 			GameRegistry.register(itemBlock);
 			
-			if(block instanceof IItemModelProvider) {
-				((IItemModelProvider) block).registerItemModel(itemBlock);
+			if(block instanceof BlockBase) {
+				((BlockBase) block).registerItemModel(itemBlock);
+			}
+			
+			if(block instanceof BlockObsidianPressurePlate) {
+				((BlockObsidianPressurePlate) block).registerItemModel(itemBlock);
 			}
 			
 			if(block instanceof IOreDictItem) {
@@ -72,10 +82,5 @@ public class BlockRegistrar {
 		return block;
 	}
 	
-	private static <B extends Block> B registerBlock(B block) {
-		ItemBlock itemBlock = new ItemBlock(block);
-		itemBlock.setRegistryName(block.getRegistryName());
-		
-		return registerBlock(block, itemBlock);
-	}
+
 }

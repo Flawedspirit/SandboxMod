@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Level;
 import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.compatibility.CompatHandler;
 import com.flawedspirit.sandboxmod.handler.ConfigHandler;
+import com.flawedspirit.sandboxmod.handler.UpdateHandler;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
@@ -21,6 +22,7 @@ import com.flawedspirit.sandboxmod.registry.MaterialRegistrar;
 import com.flawedspirit.sandboxmod.registry.RecipeRegistrar;
 import com.flawedspirit.sandboxmod.world.SandboxModWorldGen;
 
+import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -54,7 +56,9 @@ public class CommonProxy {
 		SandboxMod.logger.log(Level.INFO, "Finished registering common components.");
 	}
 	
-	public void init(FMLInitializationEvent event) {}
+	public void init(FMLInitializationEvent event) {
+		SandboxMod.logger.log(Level.INFO, "Current version: " + Reference.VERSION + " :: Latest version: " + UpdateHandler.getUpdate());
+	}
 	
 	public void postInit(FMLPostInitializationEvent event) {
 		
@@ -62,4 +66,6 @@ public class CommonProxy {
 			config.save();
 		}
 	}
+	
+	public void registerItemRenderers(Item item, int meta, String id) {}
 }

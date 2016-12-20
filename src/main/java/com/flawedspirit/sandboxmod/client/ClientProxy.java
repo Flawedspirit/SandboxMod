@@ -21,6 +21,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -30,10 +32,12 @@ public class ClientProxy extends CommonProxy {
 		registerRenderers();
 	}
 
-	public static void registerItemRenderers(Item item, int meta, String id) {
+	@Override
+	public void registerItemRenderers(Item item, int meta, String id) {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(Reference.MODID + ":" + id, "inventory"));
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemPedestal.class, new TileEntityItemPedestalRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new TileEntityJarRenderer());

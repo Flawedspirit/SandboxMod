@@ -8,18 +8,15 @@
 package com.flawedspirit.sandboxmod.block;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
-import com.flawedspirit.sandboxmod.client.ClientProxy;
-import com.flawedspirit.sandboxmod.item.IItemModelProvider;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 
-public class BlockBase extends Block implements IItemModelProvider {
+public class BlockBase extends Block {
 
-	protected String name;
+	protected String unlocalizedName;
 	
 	public BlockBase(Material material, String unlocalizedName) {
 		this(material, unlocalizedName, 3f, 5f);
@@ -27,26 +24,21 @@ public class BlockBase extends Block implements IItemModelProvider {
 	
 	public BlockBase(Material material, String unlocalizedName, float hardness, float resistance) {
 		super(material);
-		this.name = unlocalizedName;
-		setUnlocalizedName(name);
-		setRegistryName(name);
+		this.unlocalizedName = unlocalizedName;
+		setUnlocalizedName(unlocalizedName);
+		setRegistryName(unlocalizedName);
 		setHardness(hardness);
 		setResistance(resistance);
 		setCreativeTab(SandboxMod.creativeTab);
 	}
 	
 	public void registerItemModel(ItemBlock itemBlock) {
-		ClientProxy.registerItemRenderers(itemBlock, 0, name);
+		SandboxMod.proxy.registerItemRenderers(itemBlock, 0, this.unlocalizedName);
 	}
 	
 	@Override
 	public BlockBase setCreativeTab(CreativeTabs tab) {
 		super.setCreativeTab(tab);
 		return this;
-	}
-
-	@Override
-	public void registerItemModel(Item item) {
-		ClientProxy.registerItemRenderers(item, 0, name);
 	}
 }

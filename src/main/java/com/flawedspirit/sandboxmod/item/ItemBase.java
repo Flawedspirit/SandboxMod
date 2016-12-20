@@ -8,11 +8,10 @@
 package com.flawedspirit.sandboxmod.item;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
-import com.flawedspirit.sandboxmod.client.ClientProxy;
 
 import net.minecraft.item.Item;
 
-public class ItemBase extends Item implements IItemModelProvider {
+public class ItemBase extends Item {
 	
 	protected String unlocalizedName;
 	
@@ -28,8 +27,7 @@ public class ItemBase extends Item implements IItemModelProvider {
 		setMaxStackSize(maxStackSize);
 	}
 
-	@Override
 	public void registerItemModel(Item item) {
-		ClientProxy.registerItemRenderers(item, 0, unlocalizedName);
+		SandboxMod.proxy.registerItemRenderers(this, 0, unlocalizedName);
 	}
 }
