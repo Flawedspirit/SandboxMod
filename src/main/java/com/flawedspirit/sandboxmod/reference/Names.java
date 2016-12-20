@@ -9,6 +9,8 @@ public class Names {
 		public static final String ITEM_PEDESTAL = "item_pedestal";
 		public static final String GLASS_JAR = "glass_jar";
 		public static final String OBSIDIAN_PLATE = "obsidian_pressure_plate";
+		public static final String SANCTIFIED_BLOCK = "sanctified_block";
+		public static final String PROFANE_BLOCK = "profane_block";
 	}
 	
 	public static class Config {

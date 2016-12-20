@@ -1,15 +1,8 @@
-
-/*******************************************************************************
- * Copyright (c) 2016 Flawedspirit.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl-3.0.txt
- ******************************************************************************/
 package com.flawedspirit.sandboxmod.registry;
 
 import com.flawedspirit.sandboxmod.item.ArmorBase;
 import com.flawedspirit.sandboxmod.item.IOreDictItem;
+import com.flawedspirit.sandboxmod.item.ItemBase;
 import com.flawedspirit.sandboxmod.item.OreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
 
@@ -30,22 +23,29 @@ public class ItemRegistrar {
 	public static Item nuggetExperimentium;
 	
 	public static void registerItems() {
-		experimentiumHelmet = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_HELMET, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
-		experimentiumChestplate = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_CHEST, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
-		experimentiumLeggings = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_LEGS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
-		experimentiumBoots = registerItem(new ArmorBase(Names.Items.EXPERIMENTIUM_BOOTS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
+		experimentiumHelmet = register(new ArmorBase(Names.Items.EXPERIMENTIUM_HELMET, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
+		experimentiumChestplate = register(new ArmorBase(Names.Items.EXPERIMENTIUM_CHEST, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
+		experimentiumLeggings = register(new ArmorBase(Names.Items.EXPERIMENTIUM_LEGS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
+		experimentiumBoots = register(new ArmorBase(Names.Items.EXPERIMENTIUM_BOOTS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.FEET));
 		
-		ingotExperimentium = registerItem(new OreDictItem(Names.Items.EXPERIMENTIUM_INGOT));
-		nuggetExperimentium = registerItem(new OreDictItem(Names.Items.EXPERIMENTIUM_NUGGET));
+		ingotExperimentium = register(new OreDictItem(Names.Items.EXPERIMENTIUM_INGOT));
+		nuggetExperimentium = register(new OreDictItem(Names.Items.EXPERIMENTIUM_NUGGET));
 	}
 	
-	private static <I extends Item> I registerItem(I item) {
+	private static <I extends Item> I register(I item) {
 		GameRegistry.register(item);
+		
+		if(item instanceof ItemBase) {
+			((ItemBase) item).registerItemModel(item);
+		}
+		
+		if(item instanceof ArmorBase) {
+			((ArmorBase) item).registerItemModel(item);
+		}
 		
 		if(item instanceof IOreDictItem) {
 			((IOreDictItem) item).registerOreDict();
 		}
-		
 		return item;
 	}
 }

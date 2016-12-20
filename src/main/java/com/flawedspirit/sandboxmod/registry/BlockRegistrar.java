@@ -1,14 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2016 Flawedspirit.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl-3.0.txt
- ******************************************************************************/
 package com.flawedspirit.sandboxmod.registry;
 
 import com.flawedspirit.sandboxmod.block.BlockBase;
 import com.flawedspirit.sandboxmod.block.BlockOre;
+import com.flawedspirit.sandboxmod.block.BlockProfaneStone;
+import com.flawedspirit.sandboxmod.block.BlockSanctifiedStone;
 import com.flawedspirit.sandboxmod.block.BlockTileEntity;
 import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
 import com.flawedspirit.sandboxmod.block.itempedestal.BlockItemPedestal;
@@ -23,6 +18,10 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockRegistrar {
+	
+	/* Blocks */
+	public static BlockBase blockSanctified;
+	public static BlockBase blockProfane;
 	
 	/* Materials */
 	public static BlockBase blockExperimentium;
@@ -43,6 +42,8 @@ public class BlockRegistrar {
 		itemPedestal = register(new BlockItemPedestal(Names.Blocks.ITEM_PEDESTAL));
 		itemJar = register(new BlockJar(Names.Blocks.GLASS_JAR));
 		obsidianPlate = register(new BlockObsidianPressurePlate(Names.Blocks.OBSIDIAN_PLATE));
+		blockSanctified = register(new BlockSanctifiedStone(Names.Blocks.SANCTIFIED_BLOCK));
+		blockProfane = register(new BlockProfaneStone(Names.Blocks.PROFANE_BLOCK));
 	}
 	
 	private static <T extends Block> T register(T block) {
@@ -78,7 +79,6 @@ public class BlockRegistrar {
 				GameRegistry.registerTileEntity(((BlockTileEntity<?>)block).getTileEntityClass(), block.getRegistryName().toString());
 			}
 		}
-		
 		return block;
 	}
 	
