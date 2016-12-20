@@ -1,6 +1,6 @@
 package com.flawedspirit.sandboxmod.client.render;
 
-import com.flawedspirit.sandboxmod.block.jar.TileEntityJar;
+import com.flawedspirit.sandboxmod.blocks.jar.TileEntityJar;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

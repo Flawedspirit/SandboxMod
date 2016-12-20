@@ -1,8 +1,8 @@
-package com.flawedspirit.sandboxmod.block.counter;
+package com.flawedspirit.sandboxmod.blocks.counter;
 
 import java.util.List;
 
-import com.flawedspirit.sandboxmod.block.BlockTileEntity;
+import com.flawedspirit.sandboxmod.blocks.BlockTileEntity;
 import com.flawedspirit.sandboxmod.compatibility.top.ITOPInfoProvider;
 import com.flawedspirit.sandboxmod.compatibility.waila.IWailaInfoProvider;
 

@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.block.obsidianpressureplate;
+package com.flawedspirit.sandboxmod.blocks.obsidianpressureplate;
 
 import java.util.Iterator;
 import java.util.List;

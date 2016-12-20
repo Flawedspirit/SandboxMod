@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.item;
+package com.flawedspirit.sandboxmod.items;
 
 public interface IOreDictItem {
 

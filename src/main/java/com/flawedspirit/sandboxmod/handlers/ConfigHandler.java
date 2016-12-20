@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.handler;
+package com.flawedspirit.sandboxmod.handlers;
 
 import org.apache.logging.log4j.Level;
 

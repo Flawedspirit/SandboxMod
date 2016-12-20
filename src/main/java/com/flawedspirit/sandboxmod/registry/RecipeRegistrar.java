@@ -1,6 +1,6 @@
 package com.flawedspirit.sandboxmod.registry;
 
-import com.flawedspirit.sandboxmod.handler.ConfigHandler;
+import com.flawedspirit.sandboxmod.handlers.ConfigHandler;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;

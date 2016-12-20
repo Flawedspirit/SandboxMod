@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.block;
+package com.flawedspirit.sandboxmod.blocks;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
 

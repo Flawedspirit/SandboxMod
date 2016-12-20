@@ -1,6 +1,6 @@
-package com.flawedspirit.sandboxmod.block.itempedestal;
+package com.flawedspirit.sandboxmod.blocks.itempedestal;
 
-import com.flawedspirit.sandboxmod.block.BlockTileEntity;
+import com.flawedspirit.sandboxmod.blocks.BlockTileEntity;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

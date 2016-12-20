@@ -1,8 +1,8 @@
-package com.flawedspirit.sandboxmod.block.jar;
+package com.flawedspirit.sandboxmod.blocks.jar;
 
 import javax.annotation.Nullable;
 
-import com.flawedspirit.sandboxmod.block.ITileEntityStorage;
+import com.flawedspirit.sandboxmod.blocks.ITileEntityStorage;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

@@ -1,6 +1,6 @@
 package com.flawedspirit.sandboxmod.client.render;
 
-import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestal;
+import com.flawedspirit.sandboxmod.blocks.itempedestal.TileEntityItemPedestal;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

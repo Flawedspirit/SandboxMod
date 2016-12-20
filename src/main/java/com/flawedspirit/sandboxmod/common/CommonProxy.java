@@ -6,8 +6,8 @@ import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
 import com.flawedspirit.sandboxmod.compatibility.CompatHandler;
-import com.flawedspirit.sandboxmod.handler.ConfigHandler;
-import com.flawedspirit.sandboxmod.handler.UpdateHandler;
+import com.flawedspirit.sandboxmod.handlers.ConfigHandler;
+import com.flawedspirit.sandboxmod.handlers.UpdateHandler;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.BlockRegistrar;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;

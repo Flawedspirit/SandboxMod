@@ -1,6 +1,6 @@
-package com.flawedspirit.sandboxmod.block;
+package com.flawedspirit.sandboxmod.blocks;
 
-import com.flawedspirit.sandboxmod.item.IOreDictItem;
+import com.flawedspirit.sandboxmod.items.IOreDictItem;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

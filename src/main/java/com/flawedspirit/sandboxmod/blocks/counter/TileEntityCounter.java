@@ -1,4 +1,4 @@
-package com.flawedspirit.sandboxmod.block.counter;
+package com.flawedspirit.sandboxmod.blocks.counter;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;

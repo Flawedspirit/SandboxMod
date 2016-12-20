@@ -1,15 +1,15 @@
 package com.flawedspirit.sandboxmod.registry;
 
-import com.flawedspirit.sandboxmod.block.BlockBase;
-import com.flawedspirit.sandboxmod.block.BlockOre;
-import com.flawedspirit.sandboxmod.block.BlockProfaneStone;
-import com.flawedspirit.sandboxmod.block.BlockSanctifiedStone;
-import com.flawedspirit.sandboxmod.block.BlockTileEntity;
-import com.flawedspirit.sandboxmod.block.counter.BlockCounter;
-import com.flawedspirit.sandboxmod.block.itempedestal.BlockItemPedestal;
-import com.flawedspirit.sandboxmod.block.jar.BlockJar;
-import com.flawedspirit.sandboxmod.block.obsidianpressureplate.BlockObsidianPressurePlate;
-import com.flawedspirit.sandboxmod.item.IOreDictItem;
+import com.flawedspirit.sandboxmod.blocks.counter.BlockCounter;
+import com.flawedspirit.sandboxmod.blocks.itempedestal.BlockItemPedestal;
+import com.flawedspirit.sandboxmod.blocks.jar.BlockJar;
+import com.flawedspirit.sandboxmod.blocks.obsidianpressureplate.BlockObsidianPressurePlate;
+import com.flawedspirit.sandboxmod.blocks.BlockBase;
+import com.flawedspirit.sandboxmod.blocks.BlockOre;
+import com.flawedspirit.sandboxmod.blocks.BlockProfaneStone;
+import com.flawedspirit.sandboxmod.blocks.BlockSanctifiedStone;
+import com.flawedspirit.sandboxmod.blocks.BlockTileEntity;
+import com.flawedspirit.sandboxmod.items.IOreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
 
 import net.minecraft.block.Block;

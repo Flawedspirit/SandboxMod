@@ -1,8 +1,8 @@
-package com.flawedspirit.sandboxmod.block.jar;
+package com.flawedspirit.sandboxmod.blocks.jar;
 
 import java.util.List;
 
-import com.flawedspirit.sandboxmod.block.BlockTileEntity;
+import com.flawedspirit.sandboxmod.blocks.BlockTileEntity;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

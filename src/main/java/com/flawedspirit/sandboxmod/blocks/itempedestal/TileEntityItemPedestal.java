@@ -1,8 +1,8 @@
-package com.flawedspirit.sandboxmod.block.itempedestal;
+package com.flawedspirit.sandboxmod.blocks.itempedestal;
 
 import javax.annotation.Nullable;
 
-import com.flawedspirit.sandboxmod.block.ITileEntityStorage;
+import com.flawedspirit.sandboxmod.blocks.ITileEntityStorage;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

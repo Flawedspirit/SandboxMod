@@ -3,8 +3,8 @@ package com.flawedspirit.sandboxmod.client;
 import org.apache.logging.log4j.Level;
 
 import com.flawedspirit.sandboxmod.SandboxMod;
-import com.flawedspirit.sandboxmod.block.itempedestal.TileEntityItemPedestal;
-import com.flawedspirit.sandboxmod.block.jar.TileEntityJar;
+import com.flawedspirit.sandboxmod.blocks.itempedestal.TileEntityItemPedestal;
+import com.flawedspirit.sandboxmod.blocks.jar.TileEntityJar;
 import com.flawedspirit.sandboxmod.client.render.TileEntityItemPedestalRenderer;
 import com.flawedspirit.sandboxmod.client.render.TileEntityJarRenderer;
 import com.flawedspirit.sandboxmod.common.CommonProxy;

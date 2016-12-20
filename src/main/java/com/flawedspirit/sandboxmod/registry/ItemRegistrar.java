@@ -1,9 +1,9 @@
 package com.flawedspirit.sandboxmod.registry;
 
-import com.flawedspirit.sandboxmod.item.ArmorBase;
-import com.flawedspirit.sandboxmod.item.IOreDictItem;
-import com.flawedspirit.sandboxmod.item.ItemBase;
-import com.flawedspirit.sandboxmod.item.OreDictItem;
+import com.flawedspirit.sandboxmod.items.ArmorBase;
+import com.flawedspirit.sandboxmod.items.IOreDictItem;
+import com.flawedspirit.sandboxmod.items.ItemBase;
+import com.flawedspirit.sandboxmod.items.OreDictItem;
 import com.flawedspirit.sandboxmod.reference.Names;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
