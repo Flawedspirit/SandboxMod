@@ -1,10 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2016 Flawedspirit.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v3
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/lgpl-3.0.txt
- ******************************************************************************/
 package com.flawedspirit.sandboxmod.common;
 
 import java.io.File;
@@ -34,7 +27,6 @@ public class CommonProxy {
 	public static Configuration config;
 
 	public void preInit(FMLPreInitializationEvent event) {
-		
 		File configDir = event.getModConfigurationDirectory();
 		config = new Configuration(new File(configDir.getPath(), Reference.MODID + ".cfg"));
 		ConfigHandler.loadConfig();
