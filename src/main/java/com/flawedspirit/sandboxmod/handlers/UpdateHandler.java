@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import com.flawedspirit.sandboxmod.reference.Reference;
+import com.flawedspirit.sandboxmod.util.MalformedVersionStringException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -65,13 +66,26 @@ public class UpdateHandler {
 		return null;
 	}
 	
+	private static String sanitizeVersionString(String input) throws MalformedVersionStringException {
+		if(!input.matches("([0-9\\.])+(\\-.+)*")) {
+			throw new MalformedVersionStringException();
+		}
+		return input;
+	}
+	
 	public static String compareVersions(String modVersion, String remoteVersion) {
 		boolean majorHasUpdate = false,
 			minorHasUpdate = false,
 			patchHasUpdate = false;
 		
-		String[] modVersionParts = modVersion.split("\\.|-");
-		String[] remoteVersionParts = remoteVersion.split("\\.|-");
+		String[] modVersionParts = {};
+		String[] remoteVersionParts = {};
+		try {
+			modVersionParts = sanitizeVersionString(modVersion).split("/\\.|-/");
+			remoteVersionParts = sanitizeVersionString(remoteVersion).split("/\\.|-/");
+		} catch (MalformedVersionStringException ex) {
+			ex.printStackTrace();
+		}
 		
 		if(Integer.parseInt(modVersionParts[0]) < Integer.parseInt(remoteVersionParts[0])) {
 			majorHasUpdate = true;

@@ -11,7 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class EventHandler {
-	@SubscribeEvent(priority = EventPriority.NORMAL)
+		
+	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled=true)
 	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
 		if(!Reference.IS_DEV) {
 			if(ConfigHandler.enableUpdateChecking) {

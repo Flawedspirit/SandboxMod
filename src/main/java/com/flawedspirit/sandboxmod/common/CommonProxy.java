@@ -56,9 +56,9 @@ public class CommonProxy {
 		
 		// Register event handlers
 		EventHandler handler = new EventHandler();
-		FMLCommonHandler.instance().bus().register(handler);
+		FMLCommonHandler.instance().bus().register(handler); // Note to self: find out what replaces bus()
 		
-		// Register compatability
+		// Register compatibility
 		CompatHandler.registerTOPCompat();
 		CompatHandler.registerWailaCompat();
 		SandboxMod.logger.log(Level.INFO, "Finished registering common components.");
@@ -73,7 +73,7 @@ public class CommonProxy {
 					Reference.UPDATE_TYPE = VersionType.BETA;
 				}
 				
-				Reference.LATEST_VERSION = UpdateHandler.compareVersions("1.1.4", UpdateHandler.getUpdate(Reference.UPDATE_TYPE));
+				Reference.LATEST_VERSION = UpdateHandler.compareVersions(Reference.VERSION, UpdateHandler.getUpdate(Reference.UPDATE_TYPE));
 				
 				if(Reference.LAST_UPDATE_STATE == UpdateStatus.OUTDATED) {
 					SandboxMod.logger.log(Level.INFO, "A new version of " + Reference.MODNAME + " is available: [" + Reference.LATEST_VERSION + "]");
