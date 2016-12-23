@@ -2,7 +2,7 @@
 	"forge_marker": 1,
 	"defaults": {
 		"textures": {
-			"all": "sandboxmod:blocks/sanctified_block"
+			"all": "sandboxmod:blocks/blockProfane"
 		}
 	},
 	"variants": {
