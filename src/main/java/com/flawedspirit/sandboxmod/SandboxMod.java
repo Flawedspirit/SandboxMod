@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 
 import com.flawedspirit.sandboxmod.common.CommonProxy;
+import com.flawedspirit.sandboxmod.handlers.UpdateHandler;
 import com.flawedspirit.sandboxmod.reference.Reference;
 import com.flawedspirit.sandboxmod.registry.ItemRegistrar;
 
@@ -16,7 +17,13 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = Reference.DEPENDANCIES)
+@Mod(modid = Reference.MODID,
+	name = Reference.MODNAME, 
+	version = Reference.VERSION,
+	updateJSON = Reference.UPDATE_URL,
+	acceptedMinecraftVersions = Reference.MC_VERSION,
+	dependencies = Reference.DEPENDANCIES
+)
 public class SandboxMod {
 
 	@Instance(Reference.MODID)
@@ -37,6 +44,8 @@ public class SandboxMod {
 	@Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
+		new UpdateHandler();
+		
 		proxy.preInit(event);
     }
         

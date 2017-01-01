@@ -1,109 +1,73 @@
 package com.flawedspirit.sandboxmod.handlers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-
 import com.flawedspirit.sandboxmod.reference.Reference;
-import com.flawedspirit.sandboxmod.util.MalformedVersionStringException;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.common.ForgeVersion.CheckResult;
+import net.minecraftforge.common.ForgeVersion.Status;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class UpdateHandler {
 	
-	public static String REMOTE = Reference.VERSION_AUTH + Reference.MODID + ".json";
+	public static CheckResult updateCheckResult;
 	
-	public enum VersionType {
-		RELEASE,
-		BETA
+	private static boolean notified = false;
+	private static int ticksBeforeNotify;
+
+	public UpdateHandler() {
+		if(!Reference.IS_DEV && ConfigHandler.enableUpdateChecking) {
+			MinecraftForge.EVENT_BUS.register(this);
+		}
 	}
 	
-	public enum UpdateStatus {
-		CURRENT,
-		OUTDATED,
-		COMMERROR
-	}
-	
-	public static String getUpdate(VersionType versionType) {
-		return getRemoteVersion(REMOTE, versionType);
-	}
-	
-	private static String getRemoteVersion(String location, VersionType versionType) {
-		try {
-			URL url = new URL(location);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-			StringBuffer buffer = new StringBuffer();
-			JsonParser parser = new JsonParser();
+	@SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
+	public void onTick(TickEvent.ClientTickEvent event) {
+		
+		if(!Reference.IS_DEV && ConfigHandler.enableUpdateChecking) {
+			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 			
-			int read;
-			char[] chars = new char[1024];
-			
-			while((read = reader.read(chars)) != -1) {
-				buffer.append(chars, 0, read);
-			}
-			
-			JsonElement json = parser.parse(buffer.toString());
-			
-			if(json.isJsonObject()) {
-				JsonObject jsonObject = json.getAsJsonObject();
-				JsonObject root = jsonObject.getAsJsonObject("update");
+			if(!notified && player != null) {
+				ticksBeforeNotify++;
 				
-				if(root.isJsonObject()) {
-					JsonObject version = (versionType == VersionType.RELEASE) ? root.getAsJsonObject("release") : root.getAsJsonObject("beta");
+				if(ticksBeforeNotify >= 200 && event.side.isClient()) {
+					MinecraftForge.EVENT_BUS.unregister(this);
 					
-					if(version.isJsonObject()) {
-						JsonElement versionString = version.get("version");
-						return versionString.toString().replace("\"", "");
+					if(updateCheckResult.status == Status.OUTDATED) {
+						player.addChatComponentMessage(getUpdateNotice(updateCheckResult));
+						
+						notified = true;
+						ticksBeforeNotify = 0;
 					}
 				}
 			}
-		} catch(IOException ex) {
-			ex.printStackTrace();
-			Reference.LAST_UPDATE_STATE = UpdateStatus.COMMERROR;
 		}
-		return null;
 	}
 	
-	private static String sanitizeVersionString(String input) throws MalformedVersionStringException {
-		if(!input.matches("([0-9\\.])+(\\-.+)*")) {
-			throw new MalformedVersionStringException();
-		}
-		return input;
+	public static CheckResult getUpdateStatus() {
+		Object thisMod = Loader.instance().getIndexedModList().get(Reference.MODID);
+		
+		return ForgeVersion.getResult((ModContainer) thisMod);
 	}
 	
-	public static String compareVersions(String modVersion, String remoteVersion) {
-		boolean majorHasUpdate = false,
-			minorHasUpdate = false,
-			patchHasUpdate = false;
+	private static ITextComponent getUpdateNotice(CheckResult result) {
 		
-		String[] modVersionParts = {};
-		String[] remoteVersionParts = {};
-		try {
-			modVersionParts = sanitizeVersionString(modVersion).split("/\\.|-/");
-			remoteVersionParts = sanitizeVersionString(remoteVersion).split("/\\.|-/");
-		} catch (MalformedVersionStringException ex) {
-			ex.printStackTrace();
-		}
+		String banner = "[\"" + TextFormatting.GOLD + "A new version of " + Reference.MODNAME + " is available!" + TextFormatting.RESET + "\n";
+		String versions = "Current version: " + TextFormatting.RED + Reference.VERSION + TextFormatting.RESET + "; New version: " + TextFormatting.AQUA + result.target + TextFormatting.RESET + "§r\n[\",";
+		String changelogComponent = "{\"text\":\"" + TextFormatting.AQUA + "Changelog" + TextFormatting.RESET + "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + "https://flawedspirit.com" + "\"}},";
+		String downloadComponent = "{\"text\":\"" + TextFormatting.AQUA + "Download" + TextFormatting.RESET + "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + "https://flawedspirit.com" + "\"}},";
+		String linkComponent = changelogComponent + "\"] [\"," + downloadComponent + "\"]\"]";
 		
-		if(Integer.parseInt(modVersionParts[0]) < Integer.parseInt(remoteVersionParts[0])) {
-			majorHasUpdate = true;
-		}
+		String message = banner + versions + linkComponent;
 		
-		if(Integer.parseInt(modVersionParts[1]) < Integer.parseInt(remoteVersionParts[1])) {
-			minorHasUpdate = true;
-		}
-		
-		if(Integer.parseInt(modVersionParts[2]) < Integer.parseInt(remoteVersionParts[2])) {
-			patchHasUpdate = true;
-		}
-		
-		if(majorHasUpdate || minorHasUpdate || patchHasUpdate) {
-			Reference.LAST_UPDATE_STATE = UpdateStatus.OUTDATED;
-			return remoteVersion;
-		}
-		Reference.LAST_UPDATE_STATE = UpdateStatus.CURRENT;
-		return modVersion;
+		return ITextComponent.Serializer.jsonToComponent(message);
 	}
 }
