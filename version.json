@@ -1,0 +1,11 @@
+{
+    "1.10.2": {
+        "1.0.0": "This is a changelog!",
+        "1.1.0": "This is a changelog!"
+    },
+    "homepage": "https://flawedspirit.com",
+    "promos": {
+        "1.10.2-latest": "1.1.0",
+        "1.10.2-recommended": "1.0.0"
+    }
+}
