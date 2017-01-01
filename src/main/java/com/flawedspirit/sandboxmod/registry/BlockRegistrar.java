@@ -1,6 +1,7 @@
 package com.flawedspirit.sandboxmod.registry;
 
 import com.flawedspirit.sandboxmod.blocks.counter.BlockCounter;
+import com.flawedspirit.sandboxmod.blocks.injunctiontorch.BlockInjunctionTorch;
 import com.flawedspirit.sandboxmod.blocks.itempedestal.BlockItemPedestal;
 import com.flawedspirit.sandboxmod.blocks.jar.BlockJar;
 import com.flawedspirit.sandboxmod.blocks.obsidianpressureplate.BlockObsidianPressurePlate;
@@ -34,6 +35,7 @@ public class BlockRegistrar {
 	public static BlockItemPedestal itemPedestal;
 	public static BlockJar itemJar;
 	public static BlockObsidianPressurePlate obsidianPlate;
+	public static BlockInjunctionTorch injunctionTorch;
 	
 	public static void registerBlocks() {
 		blockExperimentium = register(new BlockBase(Material.IRON, Names.Blocks.BLOCK_EXPERIMENTIUM));
@@ -44,6 +46,7 @@ public class BlockRegistrar {
 		obsidianPlate = register(new BlockObsidianPressurePlate(Names.Blocks.OBSIDIAN_PLATE));
 		blockSanctified = register(new BlockSanctifiedStone(Names.Blocks.SANCTIFIED_BLOCK));
 		blockProfane = register(new BlockProfaneStone(Names.Blocks.PROFANE_BLOCK));
+		injunctionTorch = register(new BlockInjunctionTorch(Names.Blocks.INJUNCTION_TORCH));
 	}
 	
 	private static <T extends Block> T register(T block) {

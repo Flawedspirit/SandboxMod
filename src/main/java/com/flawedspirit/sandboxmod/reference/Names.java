@@ -9,8 +9,9 @@ public class Names {
 		public static final String ITEM_PEDESTAL = "item_pedestal";
 		public static final String GLASS_JAR = "glass_jar";
 		public static final String OBSIDIAN_PLATE = "obsidian_pressure_plate";
-		public static final String SANCTIFIED_BLOCK = "sanctified_block";
-		public static final String PROFANE_BLOCK = "profane_block";
+		public static final String SANCTIFIED_BLOCK = "blockSanctified";
+		public static final String PROFANE_BLOCK = "blockProfane";
+		public static final String INJUNCTION_TORCH = "injunctionTorch";
 	}
 	
 	public static class Config {
@@ -31,5 +32,6 @@ public class Names {
 		public static final String EXPERIMENTIUM_BOOTS = "experimentiumBoots";
 		public static final String EXPERIMENTIUM_INGOT = "ingotExperimentium";
 		public static final String EXPERIMENTIUM_NUGGET = "nuggetExperimentium";
+		public static final String TUNED_MOB_CRYSTAL = "tunedMonsterCrystal";
 	}
 }

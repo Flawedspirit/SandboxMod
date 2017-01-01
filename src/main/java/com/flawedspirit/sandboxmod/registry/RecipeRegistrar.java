@@ -3,6 +3,7 @@ package com.flawedspirit.sandboxmod.registry;
 import com.flawedspirit.sandboxmod.handlers.ConfigHandler;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -28,6 +29,7 @@ public class RecipeRegistrar {
 		
 		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.ingotExperimentium), "NNN", "NNN", "NNN", 'N', ItemRegistrar.nuggetExperimentium);
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegistrar.blockExperimentium), "EEE", "EEE", "EEE", 'E', ItemRegistrar.ingotExperimentium);
+		GameRegistry.addShapedRecipe(new ItemStack(ItemRegistrar.tunedMobCrystal), "SGS", "FDE", "SBS", 'S', Blocks.SOUL_SAND, 'G', Items.GUNPOWDER, 'F', Items.ROTTEN_FLESH, 'D', Items.DIAMOND, 'E', Items.SPIDER_EYE, 'B', Items.BONE);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockRegistrar.itemPedestal), " S ", "NQN", "WSW", 'S', new ItemStack(Blocks.STONE_SLAB, 1, 0), 'N', "nuggetGold", 'Q', new ItemStack(Blocks.QUARTZ_BLOCK, 1, 2), 'W', "slabWood"));
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistrar.ingotExperimentium, 9), BlockRegistrar.blockExperimentium);

@@ -12,6 +12,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemRegistrar {
 	
+	/* Items */
+	public static ItemBase tunedMobCrystal;
+	
 	/* Armor */
 	public static ArmorBase experimentiumHelmet;
 	public static ArmorBase experimentiumChestplate;
@@ -23,6 +26,8 @@ public class ItemRegistrar {
 	public static Item nuggetExperimentium;
 	
 	public static void registerItems() {
+		tunedMobCrystal = register(new ItemBase(Names.Items.TUNED_MOB_CRYSTAL));
+		
 		experimentiumHelmet = register(new ArmorBase(Names.Items.EXPERIMENTIUM_HELMET, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.HEAD));
 		experimentiumChestplate = register(new ArmorBase(Names.Items.EXPERIMENTIUM_CHEST, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.CHEST));
 		experimentiumLeggings = register(new ArmorBase(Names.Items.EXPERIMENTIUM_LEGS, MaterialRegistrar.experimentiumArmorMaterial, EntityEquipmentSlot.LEGS));
