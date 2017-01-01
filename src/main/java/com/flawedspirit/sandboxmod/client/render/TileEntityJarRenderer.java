@@ -20,9 +20,15 @@ public class TileEntityJarRenderer extends TileEntitySpecialRenderer<TileEntityJ
 			EntityItem item = new EntityItem(tile.getWorld(), 0.0d, 0.0d, 0.0d, stack);
 			
 			item.hoverStart = 0.0f;
-			item.getEntityItem().stackSize = stack.stackSize;			
+			
+			if(tile.showFullStackSize) {
+				item.getEntityItem().stackSize = stack.stackSize;
+			} else {
+				item.getEntityItem().stackSize = 1;
+			}
 			
 			GlStateManager.pushMatrix();
+			GlStateManager.enableBlend();
 			
 			float yDelta = MathHelper.sin((System.currentTimeMillis() % 86400000) / 1200f) * 0.025f + 0.1f;
 			float angleDelta = ((System.currentTimeMillis() % 86400000) / 2000f) * (180f / (float) Math.PI);
@@ -33,6 +39,7 @@ public class TileEntityJarRenderer extends TileEntitySpecialRenderer<TileEntityJ
 			
 			Minecraft.getMinecraft().getRenderManager().doRenderEntity(item, 0.0d, 0.0d, 0.0d, 0.0f, 0.0f, false);
 				
+			GlStateManager.disableBlend();
 			GlStateManager.popMatrix();
 		}
 	}
