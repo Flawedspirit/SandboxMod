@@ -16,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +24,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockJar extends BlockTileEntity<TileEntityJar> {
 	
-	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB((0.0625 * 3), 0, (0.0625 * 3), (0.0625 * 13), (0.0625 * 13), (0.0625 * 13));
 	private static final AxisAlignedBB COLLISION_BOX = new AxisAlignedBB((0.0625 * 4), 0, (0.0625 * 4), (0.0625 * 12), (0.0625 * 12), (0.0625 * 12));
 	protected static final int GUI_ID = 1;
 
@@ -46,6 +46,16 @@ public class BlockJar extends BlockTileEntity<TileEntityJar> {
 				}				
 				tile.markDirty();
 				world.notifyBlockUpdate(pos, state, state, 3);
+			} else {
+				if(heldItem == null) {
+					tile.showFullStackSize = !tile.showFullStackSize;
+					if(tile.showFullStackSize) {
+						player.addChatComponentMessage(new TextComponentString("Showing one item."));
+					} else {
+						player.addChatComponentMessage(new TextComponentString("Showing all items."));
+					}
+					tile.markDirty();
+				}
 			}
 		}		
 		return true;
@@ -82,7 +92,7 @@ public class BlockJar extends BlockTileEntity<TileEntityJar> {
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return BOUNDING_BOX;
+		return COLLISION_BOX;
 	}
 	
 	@Override

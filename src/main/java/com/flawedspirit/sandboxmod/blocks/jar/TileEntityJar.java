@@ -20,6 +20,8 @@ public class TileEntityJar extends TileEntity implements ITileEntityStorage {
 	
 	private static final int MAX_SLOTS = 1;
 	
+	public boolean showFullStackSize = true;
+	
 	private ItemStackHandler inventory = new ItemStackHandler(MAX_SLOTS);
 	private IItemHandler itemHandler = this.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.UP);
 	
